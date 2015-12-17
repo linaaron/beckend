@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<configuration debug="true">-->
+<configuration>
+    <property name="projectName" value="MySelf"/>
+    <contextName>${projectName}</contextName>
+    <timestamp key="nowTime" datePattern="yyyyMMdd HHmmss"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--<pattern>%d{yyyyMMdd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg%n</pattern>-->
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/log/self.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/log/self-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%m%n%throwable{500}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.self.learn" level="DEBUG"/>
+    <logger name="com.self.learn.socket.MyMultiService" level="INFO"/>
+    <!--<logger name="com.self.learn.socket.MyClient2" level="ERROR"/>-->
+
+    <root level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+
+    <root level="ERROR">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>
