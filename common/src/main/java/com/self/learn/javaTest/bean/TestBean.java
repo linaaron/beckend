@@ -24,4 +24,18 @@ public class TestBean {
     public String toString() {
         return String.format("id: %s, name: %s", this.id, this.name);
     }
+
+    private static String tryCatchTest() {
+        try {
+            return "1";
+        } catch (Exception E) {
+            return "2";
+        } finally {
+            return "3";
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(tryCatchTest());
+    }
 }

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 /**
  * Created by aaronl on 10/11/2015.
@@ -30,6 +31,7 @@ public class StringUtilsDemo {
 
     @Test
     public void test() {
+        System.out.println(UUID.randomUUID());
         System.out.println(String.valueOf(1));
     }
 

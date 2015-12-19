@@ -8,10 +8,9 @@
     <artifactId>parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Parent pom</name>
 
     <modules>
-        <module>self-common</module>
+        <module>common</module>
         <module>springMVC</module>
         <module>jersey</module>
         <module>jerseySpringMyBatis</module>
