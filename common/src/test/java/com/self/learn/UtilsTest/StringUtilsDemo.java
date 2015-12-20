@@ -1,4 +1,4 @@
-package com.self.learn.utils;
+package com.self.learn.UtilsTest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;

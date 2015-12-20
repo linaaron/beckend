@@ -1,10 +1,9 @@
-package com.self.learn.JDK8;
+package com.self.learn.JDK8.stream;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.text.DateFormatter;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+   <!-- <settings>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="logImpl" value="SLF4J"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+    <typeHandlers>
+        <typeHandler handler="com.ehi.bov2.handler.XMLTypeToStringHandler"/>
+        <typeHandler javaType="org.w3c.dom.Document" handler="com.ehi.bov2.handler.XmlTypeHandler"/>
+        <typeHandler javaType="java.lang.Boolean" jdbcType="VARCHAR" handler="com.ehi.bov2.handler.StringBooleanTypeHandler"/>
+    </typeHandlers>-->
+</configuration>

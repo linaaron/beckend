@@ -1,4 +1,4 @@
-package com.self.learn.utils;
+package com.self.learn.UtilsTest;
 
 import com.google.common.collect.Lists;
 import org.junit.Test;

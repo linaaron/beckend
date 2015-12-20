@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="typeAliasesPackage" value="com.self.learn.domain"/>
+        <property name="mapperLocations" value="classpath*:/com/self/learn/*Mapper.xml"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--数据源-->
+    <beans profile="local">
+        <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+            <property name="jndiName" value="${self.jndi.name}"/>
+        </bean>
+    </beans>
+
+    <beans profile="test">
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="url" value="${db.url}"/>
+            <property name="username" value="${db.user}"/>
+            <property name="password" value="${db.password}"/>
+            <!--<property name="url" value="#{systemEnvironment['ADS_CIDB_URL']}"/>-->
+            <!--<property name="username" value="#{systemEnvironment['ADS_CIDB_USER']}"/>-->
+            <!--<property name="password" value="#{systemEnvironment['ADS_CIDB_PASSWORD']}"/>-->
+        </bean>
+    </beans>
+</beans>

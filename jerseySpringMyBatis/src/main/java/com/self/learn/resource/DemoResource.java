@@ -37,8 +37,8 @@ public class DemoResource {
     public Person getDemoName(@DefaultValue("aaron lin") @PathParam("name") String name,
                               @QueryParam("age") int age) {
         Person person = new Person();
-//        person.setName(name + httpServletRequest.getRequestURI() + "/n" + httpServletRequest.getRequestURL());
-        person.setName(name);
+        person.setName(name + httpServletRequest.getRequestURI() + "/n" + httpServletRequest.getRequestURL());
+//        person.setName(name);
         person.setAge(age);
         System.out.println("===============================" + name);
         return person;

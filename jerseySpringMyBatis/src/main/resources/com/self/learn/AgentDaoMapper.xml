@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.self.learn.dao.AgentDao">
+
+    <!--<resultMap id="lead" type="com.ehi.tcom.ads.domain.Lead">
+        <result column="SALES_REP" property="salesRep"></result>
+        <result column="PRODUCT_TYPE" property="productType"></result>
+    </resultMap>
+
+    <select id="getLeadByLeadId" resultMap="lead">
+        <![CDATA[
+        SELECT PRODUCT_TYPE, SALES_REP
+        FROM
+            LEAD
+        WHERE
+            LEAD_ID = #{leadId}
+        ]]>
+    </select>-->
+
+</mapper>

@@ -8,9 +8,13 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/spring-my.xml</param-value>
+        <param-value>classpath:/spring-jsm.xml</param-value>
     </context-param>
 
+    <!-- spring项目的入口，在容器加载的时候，自动装配WebApplicationContext的配置
+         信息contextLoaderListener默认会读取applicationContext.xml，可以通过
+         context-param自定义contextConfigLocation
+      -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
