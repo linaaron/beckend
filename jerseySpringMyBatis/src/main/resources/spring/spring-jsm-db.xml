@@ -6,9 +6,17 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <!--用于指定Mybatis的配置文件位置。如果指定了该属性，那么会以该配置文件的内容作为配置信息构建对应的SqlSessionFactoryBuilder，
+            但是后续属性指定的内容会覆盖该配置文件里面指定的对应内容-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="typeAliasesPackage" value="com.self.learn.domain"/>
-        <property name="mapperLocations" value="classpath*:/com/self/learn/*Mapper.xml"/>
+        <!--对应我们的实体类所在的包，这个时候会自动取对应包中不包括包名的简单类名作为包括包名的别名。多个package之间可以用逗号或者分号等来进行分隔-->
+        <!--<property name="typeAliasesPackage" value="com.self.learn.domain"/>-->
+        <!--表示Mapper文件存放的位置，当我们的Mapper文件跟对应的Mapper接口处于同一个位置时候可以不用指定改属性的值，但文件名和接口名要一致-->
+        <property name="mapperLocations" value="classpath*:/com/self/learn/dao/*Mapper.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.self.learn.dao"/>
     </bean>
 
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

@@ -17,6 +17,7 @@
             <artifactId>common</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <!--Jersey -->
         <!-- form-data -->
         <dependency>
@@ -61,13 +62,14 @@
         <!-- Mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>${mybatis.spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+        <!--Mybatis-spring-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis.spring.version}</version>
         </dependency>
 
         <!--JDBC-->

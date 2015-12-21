@@ -2,10 +2,9 @@ package com.self.learn.domain;
 
 import java.io.Serializable;
 
-//public class Agent implements Serializable {
 public class Agent {
-
-//    private static final long serialVersionUID = -7032498147564374104L;
+//public class Agent implements Serializable{
+//    private static final long serialVersionUID = 2170158353173178180L;
 
     private Integer agentId;
     private String userId;
