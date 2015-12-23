@@ -1,10 +1,7 @@
-package com.self.learn.reflect;
+package com.self.learn.reflect.fruit;
 
-import com.self.learn.reflect.inteface.Fruit;
+import com.self.learn.reflect.fruit.impl.Fruit;
 
-/**
- * Created by aaronl on 10/9/2015.
- */
 public class Apple implements Fruit {
     @Override
     public void eat() {

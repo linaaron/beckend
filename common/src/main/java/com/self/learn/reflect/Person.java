@@ -2,18 +2,14 @@ package com.self.learn.reflect;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by aaronl on 10/9/2015.
- */
 public class Person implements China {
     private String name;
     private int age;
     private String sex;
 
-    public String test;
+    public String address;
 
     public Person() {
-
     }
 
     public Person(String sex) {
@@ -49,17 +45,17 @@ public class Person implements China {
         this.sex = sex;
     }
 
-    public String getTest() {
-        return test;
+    public String getAddress() {
+        return address;
     }
 
-    public void setTest(String test) {
-        this.test = test;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "[" + this.name + "  " + this.age + this.sex + this.test + "]";
+        return "[" + this.name + "  " + this.age + " " + this.sex + " " + this.address + "]";
     }
 
     public void sayChina() {
@@ -70,9 +66,9 @@ public class Person implements China {
         System.out.println(name + "  " + age);
     }
 
-    public void initializePersion(Person person) {
-        Field[] fields = Person.class.getDeclaredFields();
-        Field[] fields2 = Person.class.getFields();
+    public void initializePerson(Person person) {
+//        Field[] fields = Person.class.getDeclaredFields(); //获取person所有的filed
+        Field[] fields = Person.class.getFields();       //获取person和父类的 public filed
         for (Field field : fields) {
             field.setAccessible(true);
             try {

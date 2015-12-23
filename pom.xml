@@ -16,6 +16,7 @@
         <module>jerseySpringMyBatis</module>
         <!--<module>webService</module>-->
         <module>memcached</module>
+        <module>swagger</module>
     </modules>
 
     <properties>
