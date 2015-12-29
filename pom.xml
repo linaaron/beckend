@@ -17,6 +17,7 @@
         <!--<module>webService</module>-->
         <module>memcached</module>
         <module>swagger</module>
+        <module>springTask</module>
     </modules>
 
     <properties>
@@ -39,6 +40,7 @@
         <!-- plugin version -->
         <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
         <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
+        <maven-assembly-plugin.version>2.5.4</maven-assembly-plugin.version>
     </properties>
 
     <build>

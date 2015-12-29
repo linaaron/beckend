@@ -4,38 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-/**
- * Created by aaronl on 10/10/2015.
- */
 public final class FutureTest {
 
     public static void main(String[] args) throws Exception {
-//        System.out.println(Runtime.getRuntime().availableProcessors());
-        List<Future<String>> results = new ArrayList<Future<String>>();
+        int cpuNum = Runtime.getRuntime().availableProcessors();
+        List<Future<String>> Futures = new ArrayList<Future<String>>();
         ExecutorService es = Executors.newCachedThreadPool();
-        ExecutorService es2 = Executors.newFixedThreadPool(2);
+//        ExecutorService es2 = Executors.newFixedThreadPool(cpuNum * 2);
         for (int i = 0; i < 100; i++) {
 //            es.submit(new TaskRunnable());
 //            es.submit(new TaskCallable());
-//            results.add(es.submit(new TaskCallable()));
-//            results.add(es.submit(new TaskFuture()));
+            Futures.add(es.submit(new TaskCallable()));
 //            es.execute(new TaskRunnable());
 
-            results.add(es2.submit(new TaskCallable()));
-            es2.submit(new FutureTest.TaskRunnable());
-            es2.execute(new TaskRunnable());
+//            Futures.add(es2.submit(new TaskCallable()));
+//            es2.submit(new FutureTest.TaskRunnable());
+//            es2.execute(new TaskRunnable());
         }
 
-        results.forEach((Future<String> result) -> {
+        Futures.forEach((Future<String> future) -> {
             try {
-//                result.isDone();
-                System.out.println(result.get());
+//                future.isDone();
+                System.out.println(future.get());//future.get 获取结果
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
+    //实现runnable 没有返回值
     public static class TaskRunnable implements Runnable {
         @Override
         public void run() {
@@ -43,6 +40,7 @@ public final class FutureTest {
         }
     }
 
+    //实现callable 有返回值
     public static class TaskCallable implements Callable<String> {
         @Override
         public String call() throws Exception {
@@ -51,11 +49,4 @@ public final class FutureTest {
         }
     }
 
-    public static class TaskFuture implements Callable<String> {
-        @Override
-        public String call() throws Exception {
-            System.out.println("TaskCallable future");
-            return "callable future";
-        }
-    }
 }

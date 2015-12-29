@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-/**
- * Created by aaronl on 10/11/2015.
- */
 public class CallableDemo {
 
     public static void main(String[] args) {
@@ -14,11 +11,14 @@ public class CallableDemo {
 
         List<Future<String>> futures = new ArrayList<Future<String>>();
 
-        for(int i = 0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
+//            executorService.submit(new TaskWithResult(i));
             futures.add(executorService.submit(new TaskWithResult(i)));
         }
 
-        for (Future<String> future: futures){
+        executorService.shutdown();
+
+        for (Future<String> future : futures) {
             try {
                 System.out.println(future.get());
             } catch (InterruptedException e) {

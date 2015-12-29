@@ -1,9 +1,5 @@
 package com.self.learn.annotation;
 
-import com.self.learn.annotation.Apple;
-import com.self.learn.annotation.FruitColor;
-import com.self.learn.annotation.FruitName;
-
 import java.lang.reflect.Field;
 
 public class FruitInfoUtil {
