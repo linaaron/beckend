@@ -14,7 +14,7 @@
         <module>springMVC</module>
         <module>jersey</module>
         <module>jerseySpringMyBatis</module>
-        <!--<module>webService</module>-->
+        <module>webService</module>
         <module>memcached</module>
         <module>swagger</module>
         <module>springTask</module>

@@ -26,7 +26,7 @@ public class StringUtilsDemo {
     public static void StringUtilsAbbreviate() {
         LocalDate.now();
         LOG.info(StringUtils.abbreviate("This is a test for abbreviate", 6));
-        LOG.info(StringUtils.abbreviate("This is a test for abbreviate", 3,8));
+        LOG.info(StringUtils.abbreviate("This is a test for abbreviate", 3, 8));
     }
 
     @Test
@@ -35,5 +35,11 @@ public class StringUtilsDemo {
         System.out.println(String.valueOf(1));
     }
 
-
+    @Test
+    public void reverse(String originStr) {
+        System.out.println(StringUtils.reverse(originStr));
+//        if (originStr == null || originStr.length() <= 1)
+//            return originStr;
+//        System.out.println(reverse(originStr.substring(1)) + originStr.charAt(0));
+    }
 }

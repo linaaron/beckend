@@ -1,5 +1,8 @@
 package com.self.learn.JDK8.stream;
 
+import com.self.learn.domain.User;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -165,7 +168,7 @@ public class StreamDemo {
 
         StringBuffer idString = new StringBuffer();
 //        newIds.forEach(id->{idString.append(id).append(",");});
-        return idString.substring(0, idString.length()-1).toString();
+        return idString.substring(0, idString.length() - 1).toString();
 //        return newIds.stream().map(id -> id.toString()).collect(Collectors.joining(","));
     }
 
@@ -189,5 +192,19 @@ public class StreamDemo {
         }
 
         return idString.substring(0, idString.length() - 1).toString();
+    }
+
+    @Test
+    public void test22() {
+//        Integer[] ints = new Integer[]{};
+
+        List<User> activeMedicareApp = new ArrayList<>();
+        User user = new User();
+        user.setAge(11);
+        User user2 = new User();
+        user2.setAge(1221);
+
+        String test = "a%sb";
+        System.out.println(String.format(test,12));
     }
 }

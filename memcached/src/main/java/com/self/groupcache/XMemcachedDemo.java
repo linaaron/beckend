@@ -4,10 +4,8 @@ import net.rubyeye.xmemcached.*;
 import net.rubyeye.xmemcached.auth.AuthInfo;
 import net.rubyeye.xmemcached.command.BinaryCommandFactory;
 import net.rubyeye.xmemcached.exception.MemcachedException;
-import net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator;
 import net.rubyeye.xmemcached.transcoders.StringTranscoder;
 import net.rubyeye.xmemcached.utils.AddrUtil;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -17,7 +15,6 @@ import java.util.concurrent.TimeoutException;
 
 public class XMemcachedDemo {
 
-    @Test
     public void test() throws IOException {
 //        10.172.78.112:11211;10.172.78.113:11211
         MemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("10.172.78.112:11211"));
@@ -48,11 +45,11 @@ public class XMemcachedDemo {
                 public int getMaxTries() {
                     return 1;
                 }
+
                 public Integer getNewValue(long currentCAS, Integer currentValue) {
                     return 2;
                 }
             });
-
         } catch (TimeoutException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -64,7 +61,7 @@ public class XMemcachedDemo {
         client.shutdown();
     }
 
-    @Test
+    //    @Test
     public void testMemcachedClientMethod() throws IOException {
         MemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("10.172.78.112:11211 10.172.78.113:11211"));
         builder.setCommandFactory(new BinaryCommandFactory());
@@ -80,19 +77,19 @@ public class XMemcachedDemo {
             System.out.println("-----------------------name=" + client.get("name"));
             client.flushAll();
             System.out.println("-----------------------flushAll name=" + client.get("name"));
-            if(!client.set("hello", 0 ,"worldSet")){
+            if (!client.set("hello", 0, "worldSet")) {
                 System.out.println("------------------set error");
             }
             System.out.println("-------------------set hello=" + client.get("hello"));
-            if(client.set("hello", 0 ,"worldSet2")){
+            if (client.set("hello", 0, "worldSet2")) {
                 System.out.println("------------------set correct");
             }
             System.out.println("-------------------set2 hello=" + client.get("hello"));
-            if(!client.add("hello", 0 ,"worldAdd")){
+            if (!client.add("hello", 0, "worldAdd")) {
                 System.out.println("------------------add error,it's existed");
             }
             System.out.println("-------------------add exist hello=" + client.get("hello"));
-            if(!client.replace("hello", 0, "worldReplace")){
+            if (!client.replace("hello", 0, "worldReplace")) {
                 System.out.println("------------------replace error");
             }
             System.out.println("-------------------replace hello=" + client.get("hello"));
@@ -112,5 +109,11 @@ public class XMemcachedDemo {
         } finally {
             client.shutdown();
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        XMemcachedDemo xMemcachedDemo = new XMemcachedDemo();
+        xMemcachedDemo.test();
+//        xMemcachedDemo.testMemcachedClientMethod();
     }
 }

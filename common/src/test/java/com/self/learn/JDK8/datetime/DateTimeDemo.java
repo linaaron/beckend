@@ -1,4 +1,4 @@
-package com.self.learn.JDK8.stream;
+package com.self.learn.JDK8.datetime;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -93,8 +93,8 @@ public class DateTimeDemo {
 
     @Test
     public void formatDemo() {
-        String dayAfterTommorrow = "20151024";
-        LocalDate formatDate = LocalDate.parse(dayAfterTommorrow, DateTimeFormatter.BASIC_ISO_DATE);
+        String dayAfterTomorrow = "20151024";
+        LocalDate formatDate = LocalDate.parse(dayAfterTomorrow, DateTimeFormatter.BASIC_ISO_DATE);
         System.out.println(formatDate); //2015-10-24
 
         String goodFriday = "Apr 18 2014";

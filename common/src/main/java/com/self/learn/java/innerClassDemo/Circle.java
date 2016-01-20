@@ -1,4 +1,4 @@
-package com.self.learn.javaTest.innerClassDemo;
+package com.self.learn.java.innerClassDemo;
 
 public class Circle {
     public static int count = 1;
@@ -39,7 +39,7 @@ public class Circle {
             int radius = 6;
         }
 
-        new Thread(){
+        new Thread() {
             public void run() {
                 System.out.println(a);
 //                System.out.println(b);
@@ -51,7 +51,8 @@ public class Circle {
 
     //static inner class
     static class staticInner {
-        public staticInner(){}
+        public staticInner() {
+        }
     }
 
     public void test() {
@@ -64,6 +65,6 @@ public class Circle {
         draw.drawShape();
         circle.getDrawInstance().drawShape();
 
-        Circle.staticInner staticInner =  new Circle.staticInner();
+        Circle.staticInner staticInner = new Circle.staticInner();
     }
 }

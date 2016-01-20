@@ -12,12 +12,106 @@
 
     <context:component-scan base-package="com.self.learn"/>
 
-    <task:annotation-driven/>
-
-    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <bean id="propertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath:task.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--第一种方法,使用注解-->
+    <!--<task:annotation-driven/>-->
+
+    <!--第二中方法,使用xml静态配置-->
+    <!-- 使用MethodInvokingJobDetailFactoryBean，任务类可以不实现Job接口，通过targetMethod指定调用方法-->
+    <!--<bean id="jobOneDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        &lt;!&ndash;<property name="group" value="emailJob"/>&ndash;&gt;
+        &lt;!&ndash;<property name="name" value="autoemail"/>&ndash;&gt;
+        <property name="targetObject">
+            <ref bean="taskJob"/>
+        </property>
+        <property name="targetMethod">
+            <value>jobOne</value>
+        </property>
+        &lt;!&ndash;false表示等上一个任务执行完后再开启新的任务&ndash;&gt;
+        <property name="concurrent">
+            <value>false</value>
+        </property>
+    </bean>
+
+    &lt;!&ndash;  调度触发器 &ndash;&gt;
+    <bean id="jobOneTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="jobOneDetail"/>
+        </property>
+        <property name="cronExpression">
+            <value>${jobOne}</value>
+        </property>
+    </bean>
+
+    <bean id="jobTwoDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="taskJob"/>
+        </property>
+        <property name="targetMethod">
+            <value>jobTwo</value>
+        </property>
+        <property name="concurrent">
+            <value>false</value>
+        </property>
+    </bean>
+
+    <bean id="jobTwoTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="jobTwoDetail"/>
+        </property>
+        <property name="cronExpression">
+            <value>${jobTwo}</value>
+        </property>
+    </bean>
+
+    &lt;!&ndash; 调度工厂 &ndash;&gt;
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="jobOneTrigger"/>
+                <ref bean="jobTwoTrigger"/>
+            </list>
+        </property>
+    </bean>-->
+
+    <!--=======================================================================-->
+    <!--动态配置Job-->
+    <bean id="quartzManagerJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+            <property name="targetObject">
+                <ref bean="scheduleService"/>
+            </property>
+        <property name="targetMethod">
+            <value>scheduleBuild</value>
+        </property>
+        <property name="concurrent">
+            <value>false</value>
+        </property>
+    </bean>
+    <!-- 主定时计划 -->
+    <bean id="quartzManagerTrigger"
+          class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="quartzManagerJobDetail" />
+        <!-- 延时1分钟 执行任务 -->
+        <property name="startDelay" value="${job.startDelay}" />
+        <!-- 任务执行周期 5分钟 -->
+        <property name="repeatInterval" value="${job.repeatInterval}" />
+    </bean>
+
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+    <bean id="schedulerFactoryBean" lazy-init="false" autowire="no"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="quartzManagerTrigger" />
             </list>
         </property>
     </bean>
