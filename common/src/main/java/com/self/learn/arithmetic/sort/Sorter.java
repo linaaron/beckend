@@ -1,4 +1,4 @@
-package com.self.learn.arithmetic.bubbleSort;
+package com.self.learn.arithmetic.sort;
 
 import java.util.Comparator;
 

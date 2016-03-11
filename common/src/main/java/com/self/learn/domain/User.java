@@ -41,7 +41,7 @@ public class User {
             return true;
         }
         if(getClass() != obj.getClass()) {
-            return true;
+            return false;
         }
         User user = (User)obj;
         return this.name.equals(user.getName());
